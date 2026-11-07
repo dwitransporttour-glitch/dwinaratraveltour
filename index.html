@@ -1,0 +1,774 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dwinara Travel - Explore Bali With Us</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandBlue: '#0f2c59',
+                        brandGold: '#c5a059',
+                        brandDark: '#111827'
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans antialiased">
+
+    <!-- Top Bar -->
+    <div class="bg-brandBlue text-white text-xs sm:text-sm py-2 px-4">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+            <div class="flex items-center gap-4">
+                <span><i class="fa-solid fa-location-dot text-brandGold mr-1"></i> Jl. Telaga Ayu, Kedonganan, Bali</span>
+                <span><i class="fa-solid fa-clock text-brandGold mr-1"></i> 08:00 AM - 08:00 PM</span>
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="https://wa.me/6281803374283" target="_blank" class="hover:text-brandGold transition"><i class="fa-brands fa-whatsapp text-green-400 text-base mr-1"></i> +62 818-0337-4283</a>
+                <!-- Language Switcher -->
+                <div class="flex items-center gap-1 bg-white/10 px-2 py-1 rounded">
+                    <button onclick="setLanguage('id')" id="btn-id" class="font-bold text-brandGold px-1">ID</button>
+                    <span>|</span>
+                    <button onclick="setLanguage('en')" id="btn-en" class="hover:text-brandGold px-1">EN</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <img src="1000310730.jpg" alt="Dwinara Travel Logo" class="h-12 w-auto rounded-lg shadow object-cover">
+                <div>
+                    <span class="text-lg font-extrabold tracking-wider text-brandBlue block leading-none">DWINARA TRAVEL</span>
+                    <span class="text-xs text-brandGold font-semibold tracking-widest uppercase">Explore Bali With Us</span>
+                </div>
+            </div>
+            <nav class="hidden md:flex items-center gap-6 font-medium text-sm">
+                <a href="#tours" class="hover:text-brandGold transition" data-translate="nav_tours">Tour Paket</a>
+                <a href="#transfer" class="hover:text-brandGold transition" data-translate="nav_transfer">Airport Transfer</a>
+                <a href="#activities" class="hover:text-brandGold transition" data-translate="nav_activities">Aktivitas & Tiket</a>
+                <a href="#booking" class="hover:text-brandGold transition" data-translate="nav_booking">Booking Form</a>
+                <a href="#payment" class="hover:text-brandGold transition" data-translate="nav_payment">Pembayaran</a>
+            </nav>
+            <a href="https://wa.me/6281803374283?text=Halo%20Dwinara%20Travel,%20saya%20ingin%20memesan%20layanan%20wisata." target="_blank" class="bg-brandGold text-brandBlue font-bold px-4 py-2 rounded-lg shadow hover:bg-yellow-600 transition flex items-center gap-2 text-sm">
+                <i class="fa-brands fa-whatsapp text-lg"></i> <span data-translate="whatsapp_btn">WhatsApp</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative bg-gradient-to-r from-brandBlue to-gray-900 text-white py-24 px-4 overflow-hidden">
+        <div class="absolute inset-0 opacity-30 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&q=80&w=1920');"></div>
+        <div class="max-w-4xl mx-auto text-center relative z-10">
+            <span class="bg-brandGold/20 text-brandGold border border-brandGold/40 text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-widest mb-4 inline-block" data-translate="hero_badge">Official Dwinara Travel & Tour Service</span>
+            <h1 class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">Explore Bali With Us</h1>
+            <p class="text-lg md:text-xl text-gray-200 mb-8 max-w-2xl mx-auto" data-translate="hero_desc">Nikmati liburan impian Anda di Bali dengan layanan transport privat, tour eksklusif, dan tiket aktivitas terbaik bersama pemandu profesional.</p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#tours" class="bg-brandGold text-brandBlue font-bold px-8 py-3.5 rounded-xl shadow-lg hover:bg-yellow-500 transition" data-translate="hero_btn1">Lihat Tour Paket</a>
+                <a href="#transfer" class="bg-white/10 hover:bg-white/20 border border-white/30 text-white font-bold px-8 py-3.5 rounded-xl transition" data-translate="hero_btn2">Airport Transfer</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tour Packages Section -->
+    <section id="tours" class="py-16 px-4 max-w-7xl mx-auto">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-extrabold text-brandBlue mb-2" data-translate="tour_title">Tour Paket Bali</h2>
+            <p class="text-gray-600" data-translate="tour_subtitle">Pilih destinasi favorit Anda. Sudah termasuk Mobil + Driver, Biaya Parkir, Air Mineral, dan Bensin.</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- South Bali -->
+            <div class="bg-white rounded-2xl shadow-md border border-gray-100 overflow-hidden flex flex-col justify-between hover:shadow-xl transition">
+                <div>
+                    <div class="bg-brandBlue text-white p-5 flex justify-between items-center">
+                        <h3 class="text-xl font-bold">Tour South Bali</h3>
+                        <span class="bg-brandGold text-brandBlue font-extrabold px-3 py-1 rounded-lg text-sm">IDR 800K</span>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-xs text-gray-500 mb-3 font-semibold uppercase" data-translate="include_label">Include: Car + Driver, Fee Parking, Mineral Water, Petrol</p>
+                        <ul class="space-y-2 text-sm text-gray-700">
+                            <li><i class="fa-solid fa-check text-brandGold mr-2"></i> Garuda Wisnu Kencana (GWK)</li>
+                            <li><i class="fa-solid fa-check text-brandGold mr-2"></i> Uluwatu Temple / Kecak & Fire Dance</li>
+                            <li><i class="fa-solid fa-check text-brandGold mr-2"></i> Melasti & Pandawa Beach</li>
+                            <li><i class="fa-solid fa-check text-brandGold mr-2"></i> Padang-Padang Beach</li>
+                            <li><i class="fa-solid fa-check text-brandGold mr-2"></i> Paragliding & Jimbaran Beach Seafood</li>
+                            <li><i class="fa-solid fa-check text-brandGold mr-2"></i> ATV / UTV & Watersport</li>
+                            <li><i class="fa-solid fa-check text-brandGold mr-2"></i> Coffee Plantation, Suluban Beach, Blue Point Sunset</li>
+                            <li><i class="fa-solid fa-plus text-gray-400 mr-2"></i> <i>Etc (By Request)</i></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="p-6 pt-0">
+                    <a href="https://wa.me/6281803374283?text=Halo%20Dwinara%20Travel,%20saya%20ingin%20booking%20Tour%20South%20Bali%20(800K)." target="_blank" class="w-full block text-center bg-green-600 hover:bg-green-700 text-white font-bold py-3 rounded-xl transition shadow">
+                        <i class="fa-brands fa-whatsapp mr-1"></i> <span data-translate="book_wa">Book via WhatsApp</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Ubud Tour -->
+            <div class="bg-white rounded-2xl shadow-md border border-gray-100 overflow-hidden flex flex-col justify-between hover:shadow-xl transition">
+                <div>
+                    <div class="bg-brandBlue text-white p-5 flex justify-between items-center">
+                        <h3 class="text-xl font-bold">Tour Ubud</h3>
+                        <span class="bg-brandGold text-brandBlue font-extrabold px-3 py-1 rounded-lg text-sm">IDR 800K</span>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-xs text-gray-500 mb-3 font-semibold uppercase" data-translate="include_label">Include: Car + Driver, Fee Parking, Mineral Water, Petrol</p>
+                        <ul class="space-y-2 text-sm text-gray-700">
+                            <li><i class="fa-solid fa-check text-brandGold mr-2"></i> Tegalalang Rice Terrace</li>
+                            <li><i class="fa-solid fa-check text-brandGold mr-2"></i> Monkey Forest & Bali Zoo</li>
+                            <li><i class="fa-solid fa-check text-brandGold mr-2"></i> Mason Park / Bali Safari</li>
+                            <li><i class="fa-solid fa-check text-brandGold mr-2"></i> Puri Agung Ubud & Campuhan Ridge Walk</li>
+                            <li><i class="fa-solid fa-check text-brandGold mr-2"></i> Coffee Plantation & Ubud Art Market</li>
+                            <li><i class="fa-solid fa-check text-brandGold mr-2"></i> Tirta Empul Temple & ATV / Rafting</li>
+                            <li><i class="fa-solid fa-plus text-gray-400 mr-2"></i> <i>Etc (By Request)</i></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="p-6 pt-0">
+                    <a href="https://wa.me/6281803374283?text=Halo%20Dwinara%20Travel,%20saya%20ingin%20booking%20Tour%20Ubud%20(800K)." target="_blank" class="w-full block text-center bg-green-600 hover:bg-green-700 text-white font-bold py-3 rounded-xl transition shadow">
+                        <i class="fa-brands fa-whatsapp mr-1"></i> <span data-translate="book_wa">Book via WhatsApp</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- East Bali -->
+            <div class="bg-white rounded-2xl shadow-md border border-gray-100 overflow-hidden flex flex-col justify-between hover:shadow-xl transition">
+                <div>
+                    <div class="bg-brandBlue text-white p-5 flex justify-between items-center">
+                        <h3 class="text-xl font-bold">Tour East Bali</h3>
+                        <span class="bg-brandGold text-brandBlue font-extrabold px-3 py-1 rounded-lg text-sm">IDR 850K</span>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-xs text-gray-500 mb-3 font-semibold uppercase" data-translate="include_label">Include: Car + Driver, Fee Parking, Mineral Water, Petrol</p>
+                        <ul class="space-y-2 text-sm text-gray-700">
+                            <li><i class="fa-solid fa-check text-brandGold mr-2"></i> Lempuyang Temple (Gates of Heaven)</li>
+                            <li><i class="fa-solid fa-check text-brandGold mr-2"></i> Besakih Temple</li>
+                            <li><i class="fa-solid fa-check text-brandGold mr-2"></i> Tirta Gangga Water Palace</li>
+                            <li><i class="fa-solid fa-check text-brandGold mr-2"></i> Taman Ujung Sukasada</li>
+                            <li><i class="fa-solid fa-check text-brandGold mr-2"></i> Penglipuran Traditional Village</li>
+                            <li><i class="fa-solid fa-check text-brandGold mr-2"></i> Virgin Beach & Lahangan Sweet</li>
+                            <li><i class="fa-solid fa-plus text-gray-400 mr-2"></i> <i>Etc (By Request)</i></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="p-6 pt-0">
+                    <a href="https://wa.me/6281803374283?text=Halo%20Dwinara%20Travel,%20saya%20ingin%20booking%20Tour%20East%20Bali%20(850K)." target="_blank" class="w-full block text-center bg-green-600 hover:bg-green-700 text-white font-bold py-3 rounded-xl transition shadow">
+                        <i class="fa-brands fa-whatsapp mr-1"></i> <span data-translate="book_wa">Book via WhatsApp</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Middle Bali -->
+            <div class="bg-white rounded-2xl shadow-md border border-gray-100 overflow-hidden flex flex-col justify-between hover:shadow-xl transition">
+                <div>
+                    <div class="bg-brandBlue text-white p-5 flex justify-between items-center">
+                        <h3 class="text-xl font-bold">Tour Middle Bali</h3>
+                        <span class="bg-brandGold text-brandBlue font-extrabold px-3 py-1 rounded-lg text-sm">IDR 850K</span>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-xs text-gray-500 mb-3 font-semibold uppercase" data-translate="include_label">Include: Car + Driver, Fee Parking, Mineral Water, Petrol</p>
+                        <ul class="space-y-2 text-sm text-gray-700">
+                            <li><i class="fa-solid fa-check text-brandGold mr-2"></i> Ulundanu Beratan Temple</li>
+                            <li><i class="fa-solid fa-check text-brandGold mr-2"></i> Jatiluwih Rice Terrace (UNESCO)</li>
+                            <li><i class="fa-solid fa-check text-brandGold mr-2"></i> Tanah Lot Temple / Kecak & Fire Dance</li>
+                            <li><i class="fa-solid fa-check text-brandGold mr-2"></i> Kebun Raya Bedugul</li>
+                            <li><i class="fa-solid fa-check text-brandGold mr-2"></i> Waterfalls (Leke-Leke, Sekumpul, Etc)</li>
+                            <li><i class="fa-solid fa-check text-brandGold mr-2"></i> Handara Gate (Photo Session)</li>
+                            <li><i class="fa-solid fa-plus text-gray-400 mr-2"></i> <i>Etc (By Request)</i></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="p-6 pt-0">
+                    <a href="https://wa.me/6281803374283?text=Halo%20Dwinara%20Travel,%20saya%20ingin%20booking%20Tour%20Middle%20Bali%20(850K)." target="_blank" class="w-full block text-center bg-green-600 hover:bg-green-700 text-white font-bold py-3 rounded-xl transition shadow">
+                        <i class="fa-brands fa-whatsapp mr-1"></i> <span data-translate="book_wa">Book via WhatsApp</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Kintamani / Mount Batur -->
+            <div class="bg-white rounded-2xl shadow-md border border-gray-100 overflow-hidden flex flex-col justify-between hover:shadow-xl transition md:col-span-2 lg:col-span-1">
+                <div>
+                    <div class="bg-brandBlue text-white p-5 flex justify-between items-center">
+                        <h3 class="text-xl font-bold">Tour Kintamani / Mount Batur</h3>
+                        <span class="bg-brandGold text-brandBlue font-extrabold px-3 py-1 rounded-lg text-sm">IDR 850K</span>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-xs text-gray-500 mb-3 font-semibold uppercase" data-translate="include_label">Include: Car + Driver, Fee Parking, Mineral Water, Petrol</p>
+                        <ul class="space-y-2 text-sm text-gray-700">
+                            <li><i class="fa-solid fa-check text-brandGold mr-2"></i> Jeep Sunrise & Black Lava Exploration</li>
+                            <li><i class="fa-solid fa-check text-brandGold mr-2"></i> Natural Hot Spring Relaxation</li>
+                            <li><i class="fa-solid fa-check text-brandGold mr-2"></i> Coffee View Mount Batur</li>
+                            <li><i class="fa-solid fa-check text-brandGold mr-2"></i> Trekking & Camping Options</li>
+                            <li><i class="fa-solid fa-plus text-gray-400 mr-2"></i> <i>Etc (By Request)</i></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="p-6 pt-0">
+                    <a href="https://wa.me/6281803374283?text=Halo%20Dwinara%20Travel,%20saya%20ingin%20booking%20Tour%20Kintamani%20/%20Mount%20Batur%20(850K)." target="_blank" class="w-full block text-center bg-green-600 hover:bg-green-700 text-white font-bold py-3 rounded-xl transition shadow">
+                        <i class="fa-brands fa-whatsapp mr-1"></i> <span data-translate="book_wa">Book via WhatsApp</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Airport Transfer Section -->
+    <section id="transfer" class="bg-gray-100 py-16 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-extrabold text-brandBlue mb-2" data-translate="transfer_title">Airport Transfer Service</h2>
+                <p class="text-gray-600" data-translate="transfer_subtitle">Layanan antar-jemput bandara aman, nyaman, dan tepat waktu ke seluruh wilayah Bali.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+                <!-- Transfer Items -->
+                <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-200 text-center flex flex-col justify-between">
+                    <div>
+                        <h4 class="font-bold text-lg text-brandBlue">KUTA</h4>
+                        <p class="text-xl font-extrabold text-brandGold my-2">IDR 150K</p>
+                    </div>
+                    <a href="https://wa.me/6281803374283?text=Halo%20Dwinara%20Travel,%20saya%20ingin%20Airport%20Transfer%20ke%20Kuta%20(150K)." target="_blank" class="mt-3 bg-brandBlue text-white text-xs font-bold py-2 px-3 rounded-lg hover:bg-brandGold hover:text-brandBlue transition">Booking WA</a>
+                </div>
+
+                <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-200 text-center flex flex-col justify-between">
+                    <div>
+                        <h4 class="font-bold text-lg text-brandBlue">LEGIAN</h4>
+                        <p class="text-xl font-extrabold text-brandGold my-2">IDR 200K</p>
+                    </div>
+                    <a href="https://wa.me/6281803374283?text=Halo%20Dwinara%20Travel,%20saya%20ingin%20Airport%20Transfer%20ke%20Legian%20(200K)." target="_blank" class="mt-3 bg-brandBlue text-white text-xs font-bold py-2 px-3 rounded-lg hover:bg-brandGold hover:text-brandBlue transition">Booking WA</a>
+                </div>
+
+                <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-200 text-center flex flex-col justify-between">
+                    <div>
+                        <h4 class="font-bold text-lg text-brandBlue">SEMINYAK</h4>
+                        <p class="text-xl font-extrabold text-brandGold my-2">IDR 250K</p>
+                    </div>
+                    <a href="https://wa.me/6281803374283?text=Halo%20Dwinara%20Travel,%20saya%20ingin%20Airport%20Transfer%20ke%20Seminyak%20(250K)." target="_blank" class="mt-3 bg-brandBlue text-white text-xs font-bold py-2 px-3 rounded-lg hover:bg-brandGold hover:text-brandBlue transition">Booking WA</a>
+                </div>
+
+                <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-200 text-center flex flex-col justify-between">
+                    <div>
+                        <h4 class="font-bold text-lg text-brandBlue">CANGGU</h4>
+                        <p class="text-xl font-extrabold text-brandGold my-2">IDR 300K</p>
+                    </div>
+                    <a href="https://wa.me/6281803374283?text=Halo%20Dwinara%20Travel,%20saya%20ingin%20Airport%20Transfer%20ke%20Canggu%20(300K)." target="_blank" class="mt-3 bg-brandBlue text-white text-xs font-bold py-2 px-3 rounded-lg hover:bg-brandGold hover:text-brandBlue transition">Booking WA</a>
+                </div>
+
+                <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-200 text-center flex flex-col justify-between">
+                    <div>
+                        <h4 class="font-bold text-lg text-brandBlue">JIMBARAN</h4>
+                        <p class="text-xl font-extrabold text-brandGold my-2">IDR 200K</p>
+                    </div>
+                    <a href="https://wa.me/6281803374283?text=Halo%20Dwinara%20Travel,%20saya%20ingin%20Airport%20Transfer%20ke%20Jimbaran%20(200K)." target="_blank" class="mt-3 bg-brandBlue text-white text-xs font-bold py-2 px-3 rounded-lg hover:bg-brandGold hover:text-brandBlue transition">Booking WA</a>
+                </div>
+
+                <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-200 text-center flex flex-col justify-between">
+                    <div>
+                        <h4 class="font-bold text-lg text-brandBlue">UNGASAN</h4>
+                        <p class="text-xl font-extrabold text-brandGold my-2">IDR 300K</p>
+                    </div>
+                    <a href="https://wa.me/6281803374283?text=Halo%20Dwinara%20Travel,%20saya%20ingin%20Airport%20Transfer%20ke%20Ungasan%20(300K)." target="_blank" class="mt-3 bg-brandBlue text-white text-xs font-bold py-2 px-3 rounded-lg hover:bg-brandGold hover:text-brandBlue transition">Booking WA</a>
+                </div>
+
+                <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-200 text-center flex flex-col justify-between">
+                    <div>
+                        <h4 class="font-bold text-lg text-brandBlue">ULUWATU / PECATU</h4>
+                        <p class="text-xl font-extrabold text-brandGold my-2">IDR 300K</p>
+                    </div>
+                    <a href="https://wa.me/6281803374283?text=Halo%20Dwinara%20Travel,%20saya%20ingin%20Airport%20Transfer%20ke%20Uluwatu/Pecatu%20(300K)." target="_blank" class="mt-3 bg-brandBlue text-white text-xs font-bold py-2 px-3 rounded-lg hover:bg-brandGold hover:text-brandBlue transition">Booking WA</a>
+                </div>
+
+                <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-200 text-center flex flex-col justify-between">
+                    <div>
+                        <h4 class="font-bold text-lg text-brandBlue">NUSA DUA</h4>
+                        <p class="text-xl font-extrabold text-brandGold my-2">IDR 250K</p>
+                    </div>
+                    <a href="https://wa.me/6281803374283?text=Halo%20Dwinara%20Travel,%20saya%20ingin%20Airport%20Transfer%20ke%20Nusa%20Dua%20(250K)." target="_blank" class="mt-3 bg-brandBlue text-white text-xs font-bold py-2 px-3 rounded-lg hover:bg-brandGold hover:text-brandBlue transition">Booking WA</a>
+                </div>
+
+                <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-200 text-center flex flex-col justify-between">
+                    <div>
+                        <h4 class="font-bold text-lg text-brandBlue">SANUR</h4>
+                        <p class="text-xl font-extrabold text-brandGold my-2">IDR 250K</p>
+                    </div>
+                    <a href="https://wa.me/6281803374283?text=Halo%20Dwinara%20Travel,%20saya%20ingin%20Airport%20Transfer%20ke%20Sanur%20(250K)." target="_blank" class="mt-3 bg-brandBlue text-white text-xs font-bold py-2 px-3 rounded-lg hover:bg-brandGold hover:text-brandBlue transition">Booking WA</a>
+                </div>
+
+                <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-200 text-center flex flex-col justify-between">
+                    <div>
+                        <h4 class="font-bold text-lg text-brandBlue">UBUD</h4>
+                        <p class="text-xl font-extrabold text-brandGold my-2">IDR 400K</p>
+                    </div>
+                    <a href="https://wa.me/6281803374283?text=Halo%20Dwinara%20Travel,%20saya%20ingin%20Airport%20Transfer%20ke%20Ubud%20(400K)." target="_blank" class="mt-3 bg-brandBlue text-white text-xs font-bold py-2 px-3 rounded-lg hover:bg-brandGold hover:text-brandBlue transition">Booking WA</a>
+                </div>
+
+                <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-200 text-center flex flex-col justify-between">
+                    <div>
+                        <h4 class="font-bold text-lg text-brandBlue">KINTAMANI</h4>
+                        <p class="text-xl font-extrabold text-brandGold my-2">IDR 700K</p>
+                    </div>
+                    <a href="https://wa.me/6281803374283?text=Halo%20Dwinara%20Travel,%20saya%20ingin%20Airport%20Transfer%20ke%20Kintamani%20(700K)." target="_blank" class="mt-3 bg-brandBlue text-white text-xs font-bold py-2 px-3 rounded-lg hover:bg-brandGold hover:text-brandBlue transition">Booking WA</a>
+                </div>
+
+                <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-200 text-center flex flex-col justify-between">
+                    <div>
+                        <h4 class="font-bold text-lg text-brandBlue">AMED</h4>
+                        <p class="text-xl font-extrabold text-brandGold my-2">IDR 800K</p>
+                    </div>
+                    <a href="https://wa.me/6281803374283?text=Halo%20Dwinara%20Travel,%20saya%20ingin%20Airport%20Transfer%20ke%20Amed%20(800K)." target="_blank" class="mt-3 bg-brandBlue text-white text-xs font-bold py-2 px-3 rounded-lg hover:bg-brandGold hover:text-brandBlue transition">Booking WA</a>
+                </div>
+
+                <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-200 text-center flex flex-col justify-between">
+                    <div>
+                        <h4 class="font-bold text-lg text-brandBlue">BEDUGUL</h4>
+                        <p class="text-xl font-extrabold text-brandGold my-2">IDR 750K</p>
+                    </div>
+                    <a href="https://wa.me/6281803374283?text=Halo%20Dwinara%20Travel,%20saya%20ingin%20Airport%20Transfer%20ke%20Bedugul%20(750K)." target="_blank" class="mt-3 bg-brandBlue text-white text-xs font-bold py-2 px-3 rounded-lg hover:bg-brandGold hover:text-brandBlue transition">Booking WA</a>
+                </div>
+
+                <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-200 text-center flex flex-col justify-between">
+                    <div>
+                        <h4 class="font-bold text-lg text-brandBlue">GILIMANUK</h4>
+                        <p class="text-xl font-extrabold text-brandGold my-2">IDR 900K</p>
+                    </div>
+                    <a href="https://wa.me/6281803374283?text=Halo%20Dwinara%20Travel,%20saya%20ingin%20Airport%20Transfer%20ke%20Gilimanuk%20(900K)." target="_blank" class="mt-3 bg-brandBlue text-white text-xs font-bold py-2 px-3 rounded-lg hover:bg-brandGold hover:text-brandBlue transition">Booking WA</a>
+                </div>
+
+                <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-200 text-center flex flex-col justify-between">
+                    <div>
+                        <h4 class="font-bold text-lg text-brandBlue">LOVINA</h4>
+                        <p class="text-xl font-extrabold text-brandGold my-2">IDR 850K</p>
+                    </div>
+                    <a href="https://wa.me/6281803374283?text=Halo%20Dwinara%20Travel,%20saya%20ingin%20Airport%20Transfer%20ke%20Lovina%20(850K)." target="_blank" class="mt-3 bg-brandBlue text-white text-xs font-bold py-2 px-3 rounded-lg hover:bg-brandGold hover:text-brandBlue transition">Booking WA</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Activities & Tickets Section -->
+    <section id="activities" class="py-16 px-4 max-w-7xl mx-auto">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-extrabold text-brandBlue mb-2" data-translate="activity_title">Tiket Aktivitas & Petualangan</h2>
+            <p class="text-gray-600" data-translate="activity_subtitle">Dapatkan pengalaman seru dan tiket masuk eksklusif di Bali.</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8 mb-12">
+            <!-- Jeep Sunrise -->
+            <div class="bg-white rounded-2xl shadow-md border border-gray-100 p-6 flex flex-col justify-between">
+                <div>
+                    <h3 class="text-xl font-bold text-brandBlue mb-2">Jeep Sunrise + Black Lava + Water Hot Spring</h3>
+                    <div class="space-y-2 my-4 bg-gray-50 p-4 rounded-xl text-sm">
+                        <div class="flex justify-between font-semibold"><span>1 Person:</span> <span class="text-brandGold">IDR 1.450K / pax</span></div>
+                        <div class="flex justify-between font-semibold"><span>2 Persons:</span> <span class="text-brandGold">IDR 1.100K / pax</span></div>
+                        <div class="flex justify-between font-semibold"><span>3 Persons:</span> <span class="text-brandGold">IDR 800K / pax</span></div>
+                    </div>
+                    <p class="text-xs text-gray-500 mb-4"><strong>Include:</strong> Breakfast, Photoshoot, Safety Equipment, Insurance, Guide Profesional, Pickup & Drop Hotel/Villa.</p>
+                </div>
+                <a href="https://wa.me/6281803374283?text=Halo%20Dwinara%20Travel,%20saya%20ingin%20booking%20Jeep%20Sunrise%20Mount%20Batur." target="_blank" class="w-full text-center bg-green-600 hover:bg-green-700 text-white font-bold py-3 rounded-xl transition shadow">
+                    <i class="fa-brands fa-whatsapp mr-1"></i> <span data-translate="book_wa">Book via WhatsApp</span>
+                </a>
+            </div>
+
+            <!-- Mount Batur Camping -->
+            <div class="bg-white rounded-2xl shadow-md border border-gray-100 p-6 flex flex-col justify-between">
+                <div>
+                    <h3 class="text-xl font-bold text-brandBlue mb-2">Mount Batur Camping & Water Hot Spring</h3>
+                    <div class="space-y-2 my-4 bg-gray-50 p-4 rounded-xl text-sm">
+                        <div class="flex justify-between font-semibold"><span>1 Person:</span> <span class="text-brandGold">IDR 2.500K</span></div>
+                        <div class="flex justify-between font-semibold"><span>2 Persons:</span> <span class="text-brandGold">IDR 1.400K / pax</span></div>
+                        <div class="flex justify-between font-semibold"><span>3 Persons:</span> <span class="text-brandGold">IDR 1.100K / person</span></div>
+                    </div>
+                    <p class="text-xs text-gray-500 mb-4"><strong>Include:</strong> Privat Trip, Guide, Mineral Water, Headlamp, Trekking Poles, Breakfast, Hot Drink, Pickup & Drop Hotel/Villa.</p>
+                </div>
+                <a href="https://wa.me/6281803374283?text=Halo%20Dwinara%20Travel,%20saya%20ingin%20booking%20Mount%20Batur%20Camping." target="_blank" class="w-full text-center bg-green-600 hover:bg-green-700 text-white font-bold py-3 rounded-xl transition shadow">
+                    <i class="fa-brands fa-whatsapp mr-1"></i> <span data-translate="book_wa">Book via WhatsApp</span>
+                </a>
+            </div>
+
+            <!-- ATV -->
+            <div class="bg-white rounded-2xl shadow-md border border-gray-100 p-6 flex flex-col justify-between">
+                <div>
+                    <h3 class="text-xl font-bold text-brandBlue mb-2">ATV Adventure Ride</h3>
+                    <div class="space-y-2 my-4 bg-gray-50 p-4 rounded-xl text-sm">
+                        <div class="flex justify-between font-semibold"><span>Single:</span> <span class="text-brandGold">IDR 1.200K / pax</span></div>
+                        <div class="flex justify-between font-semibold"><span>Tandem:</span> <span class="text-brandGold">IDR 1.500K / 2 pax</span></div>
+                    </div>
+                    <p class="text-xs text-gray-500 mb-4"><strong>Include:</strong> Lunch, Profesional Guide, Towels, Locker, Safety Equipment, Insurance, Pickup & Drop Hotel/Villa.</p>
+                </div>
+                <a href="https://wa.me/6281803374283?text=Halo%20Dwinara%20Travel,%20saya%20ingin%20booking%20ATV%20Adventure." target="_blank" class="w-full text-center bg-green-600 hover:bg-green-700 text-white font-bold py-3 rounded-xl transition shadow">
+                    <i class="fa-brands fa-whatsapp mr-1"></i> <span data-translate="book_wa">Book via WhatsApp</span>
+                </a>
+            </div>
+
+            <!-- UTV / Buggy Beach -->
+            <div class="bg-white rounded-2xl shadow-md border border-gray-100 p-6 flex flex-col justify-between">
+                <div>
+                    <h3 class="text-xl font-bold text-brandBlue mb-2">UTV / Buggy Beach Ride</h3>
+                    <div class="space-y-2 my-4 bg-gray-50 p-4 rounded-xl text-sm">
+                        <div class="flex justify-between font-semibold"><span>Single:</span> <span class="text-brandGold">IDR 1.500K / pax</span></div>
+                        <div class="flex justify-between font-semibold"><span>Tandem:</span> <span class="text-brandGold">IDR 2.200K / 2 pax</span></div>
+                    </div>
+                    <p class="text-xs text-gray-500 mb-4"><strong>Include:</strong> Lunch, Profesional Guide, Towels, Locker, Safety Equipment, Insurance, Pickup & Drop Hotel/Villa.</p>
+                </div>
+                <a href="https://wa.me/6281803374283?text=Halo%20Dwinara%20Travel,%20saya%20ingin%20booking%20UTV%20Buggy%20Beach." target="_blank" class="w-full text-center bg-green-600 hover:bg-green-700 text-white font-bold py-3 rounded-xl transition shadow">
+                    <i class="fa-brands fa-whatsapp mr-1"></i> <span data-translate="book_wa">Book via WhatsApp</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Bali Zoo Packages -->
+        <div class="bg-blue-50 border border-blue-100 rounded-3xl p-8">
+            <h3 class="text-2xl font-extrabold text-brandBlue mb-6 text-center">Bali Zoo Packages & Special Experiences</h3>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Zoo 1 -->
+                <div class="bg-white p-5 rounded-xl shadow-sm border flex flex-col justify-between">
+                    <div>
+                        <h4 class="font-bold text-brandBlue mb-2">1. Zoo Admission</h4>
+                        <p class="text-sm text-gray-600">Adult: IDR 395K | Child: IDR 280K</p>
+                    </div>
+                    <a href="https://wa.me/6281803374283?text=Halo%20Dwinara%20Travel,%20booking%20Bali%20Zoo%20Admission." target="_blank" class="mt-4 bg-green-600 text-white text-xs font-bold py-2 rounded text-center hover:bg-green-700">Booking WhatsApp</a>
+                </div>
+                <!-- Zoo 2 -->
+                <div class="bg-white p-5 rounded-xl shadow-sm border flex flex-col justify-between">
+                    <div>
+                        <h4 class="font-bold text-brandBlue mb-2">2. Breakfast with Orangutan</h4>
+                        <p class="text-sm text-gray-600">Adult: IDR 825K | Child: IDR 580K</p>
+                    </div>
+                    <a href="https://wa.me/6281803374283?text=Halo%20Dwinara%20Travel,%20booking%20Breakfast%20with%20Orangutan." target="_blank" class="mt-4 bg-green-600 text-white text-xs font-bold py-2 rounded text-center hover:bg-green-700">Booking WhatsApp</a>
+                </div>
+                <!-- Zoo 3 -->
+                <div class="bg-white p-5 rounded-xl shadow-sm border flex flex-col justify-between">
+                    <div>
+                        <h4 class="font-bold text-brandBlue mb-2">3. Elephant Mud Fun</h4>
+                        <p class="text-sm text-gray-600">Adult: IDR 1.500K | Child: <span class="text-green-600 font-bold">Free</span></p>
+                    </div>
+                    <a href="https://wa.me/6281803374283?text=Halo%20Dwinara%20Travel,%20booking%20Elephant%20Mud%20Fun." target="_blank" class="mt-4 bg-green-600 text-white text-xs font-bold py-2 rounded text-center hover:bg-green-700">Booking WhatsApp</a>
+                </div>
+                <!-- Zoo 4 -->
+                <div class="bg-white p-5 rounded-xl shadow-sm border flex flex-col justify-between">
+                    <div>
+                        <h4 class="font-bold text-brandBlue mb-2">4. Breakfast with Orangutan & Elephant Mud Fun</h4>
+                        <p class="text-sm text-gray-600">Adult: IDR 1.875K | Child: <span class="text-green-600 font-bold">Free</span></p>
+                    </div>
+                    <a href="https://wa.me/6281803374283?text=Halo%20Dwinara%20Travel,%20booking%20Breakfast%20with%20Orangutan%20%26%20Elephant%20Mud%20Fun." target="_blank" class="mt-4 bg-green-600 text-white text-xs font-bold py-2 rounded text-center hover:bg-green-700">Booking WhatsApp</a>
+                </div>
+                <!-- Zoo 5 -->
+                <div class="bg-white p-5 rounded-xl shadow-sm border flex flex-col justify-between">
+                    <div>
+                        <h4 class="font-bold text-brandBlue mb-2">5. Behind Closed Doors</h4>
+                        <p class="text-sm text-gray-600">Adult: IDR 900K | Child: IDR 630K</p>
+                    </div>
+                    <a href="https://wa.me/6281803374283?text=Halo%20Dwinara%20Travel,%20booking%20Behind%20Closed%20Doors." target="_blank" class="mt-4 bg-green-600 text-white text-xs font-bold py-2 rounded text-center hover:bg-green-700">Booking WhatsApp</a>
+                </div>
+                <!-- Zoo 6 -->
+                <div class="bg-white p-5 rounded-xl shadow-sm border flex flex-col justify-between">
+                    <div>
+                        <h4 class="font-bold text-brandBlue mb-2">6. Elephant Mud Fun & Behind Closed Doors</h4>
+                        <p class="text-sm text-gray-600">Adult: IDR 1.950K | Child: <span class="text-green-600 font-bold">Free</span></p>
+                    </div>
+                    <a href="https://wa.me/6281803374283?text=Halo%20Dwinara%20Travel,%20booking%20Elephant%20Mud%20Fun%20%26%20Behind%20Closed%20Doors." target="_blank" class="mt-4 bg-green-600 text-white text-xs font-bold py-2 rounded text-center hover:bg-green-700">Booking WhatsApp</a>
+                </div>
+                <!-- Zoo 7 -->
+                <div class="bg-white p-5 rounded-xl shadow-sm border flex flex-col justify-between">
+                    <div>
+                        <h4 class="font-bold text-brandBlue mb-2">7. Brunch With Capybara</h4>
+                        <p class="text-sm text-gray-600">Adult: IDR 750K | Child: IDR 525K</p>
+                    </div>
+                    <a href="https://wa.me/6281803374283?text=Halo%20Dwinara%20Travel,%20booking%20Brunch%20With%20Capybara." target="_blank" class="mt-4 bg-green-600 text-white text-xs font-bold py-2 rounded text-center hover:bg-green-700">Booking WhatsApp</a>
+                </div>
+                <!-- Zoo 8 -->
+                <div class="bg-white p-5 rounded-xl shadow-sm border flex flex-col justify-between">
+                    <div>
+                        <h4 class="font-bold text-brandBlue mb-2">8. Capybara Connection</h4>
+                        <p class="text-sm text-gray-600">Adult: IDR 605K | Child: IDR 430K</p>
+                    </div>
+                    <a href="https://wa.me/6281803374283?text=Halo%20Dwinara%20Travel,%20booking%20Capybara%20Connection." target="_blank" class="mt-4 bg-green-600 text-white text-xs font-bold py-2 rounded text-center hover:bg-green-700">Booking WhatsApp</a>
+                </div>
+                <!-- Zoo 9 -->
+                <div class="bg-white p-5 rounded-xl shadow-sm border flex flex-col justify-between">
+                    <div>
+                        <h4 class="font-bold text-brandBlue mb-2">9. Breakfast with Orangutan & Brunch With Capybara</h4>
+                        <p class="text-sm text-gray-600">Adult: IDR 1.325K | Child: IDR 930K</p>
+                    </div>
+                    <a href="https://wa.me/6281803374283?text=Halo%20Dwinara%20Travel,%20booking%20Breakfast%20with%20Orangutan%20%26%20Brunch%20With%20Capybara." target="_blank" class="mt-4 bg-green-600 text-white text-xs font-bold py-2 rounded text-center hover:bg-green-700">Booking WhatsApp</a>
+                </div>
+                <!-- Zoo 10 -->
+                <div class="bg-white p-5 rounded-xl shadow-sm border flex flex-col justify-between">
+                    <div>
+                        <h4 class="font-bold text-brandBlue mb-2">10. Breakfast with Orangutan & Capybara Connection</h4>
+                        <p class="text-sm text-gray-600">Adult: IDR 1.180K | Child: IDR 830K</p>
+                    </div>
+                    <a href="https://wa.me/6281803374283?text=Halo%20Dwinara%20Travel,%20booking%20Breakfast%20with%20Orangutan%20%26%20Capybara%20Connection." target="_blank" class="mt-4 bg-green-600 text-white text-xs font-bold py-2 rounded text-center hover:bg-green-700">Booking WhatsApp</a>
+                </div>
+                <!-- Zoo 11 -->
+                <div class="bg-white p-5 rounded-xl shadow-sm border flex flex-col justify-between">
+                    <div>
+                        <h4 class="font-bold text-brandBlue mb-2">11. Capybara Connection & Behind Closed Doors</h4>
+                        <p class="text-sm text-gray-600">Adult: IDR 1.175K | Child: IDR 830K</p>
+                    </div>
+                    <a href="https://wa.me/6281803374283?text=Halo%20Dwinara%20Travel,%20booking%20Capybara%20Connection%20%26%20Behind%20Closed%20Doors." target="_blank" class="mt-4 bg-green-600 text-white text-xs font-bold py-2 rounded text-center hover:bg-green-700">Booking WhatsApp</a>
+                </div>
+                <!-- Zoo 12 -->
+                <div class="bg-white p-5 rounded-xl shadow-sm border flex flex-col justify-between">
+                    <div>
+                        <h4 class="font-bold text-brandBlue mb-2">12. Brunch With Capybara & Elephant Mud Fun</h4>
+                        <p class="text-sm text-gray-600">Adult: IDR 1.800K | Child: <span class="text-green-600 font-bold">Free</span></p>
+                    </div>
+                    <a href="https://wa.me/6281803374283?text=Halo%20Dwinara%20Travel,%20booking%20Brunch%20With%20Capybara%20%26%20Elephant%20Mud%20Fun." target="_blank" class="mt-4 bg-green-600 text-white text-xs font-bold py-2 rounded text-center hover:bg-green-700">Booking WhatsApp</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Form & Payment Section -->
+    <section id="booking" class="bg-gray-900 text-white py-16 px-4">
+        <div class="max-w-3xl mx-auto bg-white text-gray-800 rounded-3xl shadow-2xl p-8 md:p-12">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-extrabold text-brandBlue mb-2" data-translate="form_title">Formulir Pemesanan Online</h2>
+                <p class="text-gray-600 text-sm" data-translate="form_subtitle">Isi data di bawah ini, pemesanan akan langsung terhubung ke WhatsApp official kami.</p>
+            </div>
+
+            <form id="bookingForm" onsubmit="submitBooking(event)" class="space-y-6">
+                <div>
+                    <label class="block text-sm font-bold mb-2" data-translate="form_name">Nama Lengkap / Full Name</label>
+                    <input type="text" id="bName" required class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-brandBlue focus:outline-none" placeholder="Masukkan nama Anda...">
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-sm font-bold mb-2" data-translate="form_type">Jenis Layanan / Service Type</label>
+                        <select id="bType" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-brandBlue focus:outline-none">
+                            <option value="Tour">Tour Paket</option>
+                            <option value="Airport Transfer">Airport Transfer</option>
+                            <option value="Ticket Activity">Ticket & Activity</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold mb-2" data-translate="form_pax">Jumlah Penumpang / Passenger</label>
+                        <select id="bPassenger" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-brandBlue focus:outline-none">
+                            <option value="1">1 Orang / Person</option>
+                            <option value="2">2 Orang / Persons</option>
+                            <option value="3">3 Orang / Persons</option>
+                            <option value="4">4 Orang / Persons</option>
+                            <option value="5">5+ Orang / Persons</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-sm font-bold mb-2" data-translate="form_luggage">Jumlah Bagasi / Luggage</label>
+                        <select id="bLuggage" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-brandBlue focus:outline-none">
+                            <option value="0">0 Bagasi</option>
+                            <option value="1">1 Koper / Luggage</option>
+                            <option value="2">2 Koper / Luggage</option>
+                            <option value="3">3 Koper / Luggage</option>
+                            <option value="4">4 Koper / Luggage</option>
+                            <option value="5">5+ Koper / Luggage</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold mb-2" data-translate="form_payment">Metode Pembayaran / Payment</label>
+                        <select id="bPayment" onchange="togglePaymentInfo()" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-brandBlue focus:outline-none">
+                            <option value="Cash">Cash / Tunai</option>
+                            <option value="Transfer Bank">Transfer Bank</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Bank Info Box (Hidden by default, shown if Transfer Bank is selected) -->
+                <div id="bankInfoBox" class="hidden bg-blue-50 border border-blue-200 p-4 rounded-xl text-sm space-y-1">
+                    <p class="font-bold text-brandBlue mb-1"><i class="fa-solid fa-building-columns mr-1"></i> Informasi Rekening Resmi:</p>
+                    <p><strong>Bank Name:</strong> BCA (Bank Central Asia)</p>
+                    <p><strong>Account Number:</strong> 6955245052</p>
+                    <p><strong>Name Account:</strong> DWI NARENDA HARI WUNGSU</p>
+                </div>
+
+                <button type="submit" class="w-full bg-brandBlue hover:bg-blue-900 text-white font-bold py-4 rounded-xl shadow-lg transition flex justify-center items-center gap-2 text-lg">
+                    <i class="fa-brands fa-whatsapp text-2xl text-green-400"></i> <span data-translate="form_submit">Kirim Pesanan ke WhatsApp</span>
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Bank Details Dedicated Section -->
+    <section id="payment" class="py-16 px-4 max-w-4xl mx-auto text-center">
+        <div class="bg-white rounded-3xl shadow-md border border-gray-200 p-8">
+            <div class="inline-block bg-brandGold/20 text-brandGold p-4 rounded-full mb-4">
+                <i class="fa-solid fa-credit-card text-3xl"></i>
+            </div>
+            <h3 class="text-2xl font-extrabold text-brandBlue mb-2" data-translate="payment_title">Informasi Pembayaran Bank</h3>
+            <p class="text-gray-600 mb-6" data-translate="payment_subtitle">Lakukan pembayaran transfer melalui rekening resmi perusahaan kami di bawah ini:</p>
+            <div class="bg-gray-50 border border-gray-200 p-6 rounded-2xl max-w-md mx-auto text-left space-y-3">
+                <div class="flex justify-between border-b pb-2"><span class="text-gray-500">Bank Name</span> <span class="font-bold text-brandBlue">BCA (Bank Central Asia)</span></div>
+                <div class="flex justify-between border-b pb-2"><span class="text-gray-500">Account Number</span> <span class="font-bold text-brandGold text-lg">6955245052</span></div>
+                <div class="flex justify-between"><span class="text-gray-500">Account Name</span> <span class="font-bold text-brandBlue uppercase">DWI NARENDA HARI WUNGSU</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-brandDark text-white pt-12 pb-6 px-4 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-8 mb-8">
+            <div>
+                <div class="flex items-center gap-3 mb-4">
+                    <img src="1000310730.jpg" alt="Logo" class="h-10 w-auto rounded">
+                    <span class="text-lg font-bold tracking-wider">DWINARA TRAVEL</span>
+                </div>
+                <p class="text-gray-400 text-sm" data-translate="footer_desc">Mitra terpercaya liburan dan transportasi Anda di Bali. Profesional, aman, dan memuaskan.</p>
+            </div>
+            <div>
+                <h4 class="text-brandGold font-bold mb-4" data-translate="footer_contact">Kontak & Alamat</h4>
+                <p class="text-gray-300 text-sm mb-2"><i class="fa-solid fa-location-dot text-brandGold mr-2"></i> Jl. Telaga Ayu, Kedonganan, Bali</p>
+                <p class="text-gray-300 text-sm mb-2"><i class="fa-solid fa-clock text-brandGold mr-2"></i> Office Hours: 08:00 AM - 08:00 PM</p>
+                <p class="text-gray-300 text-sm"><i class="fa-brands fa-whatsapp text-green-400 mr-2"></i> +62 818-0337-4283</p>
+            </div>
+            <div>
+                <h4 class="text-brandGold font-bold mb-4" data-translate="footer_quick">Menu Cepat</h4>
+                <ul class="space-y-2 text-sm text-gray-300">
+                    <li><a href="#tours" class="hover:text-brandGold">Tour Paket Bali</a></li>
+                    <li><a href="#transfer" class="hover:text-brandGold">Airport Transfer</a></li>
+                    <li><a href="#activities" class="hover:text-brandGold">Aktivitas & Tiket</a></li>
+                    <li><a href="#booking" class="hover:text-brandGold">Formulir Booking</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto text-center border-t border-gray-800 pt-6 text-xs text-gray-500">
+            &copy; 2026 Dwinara Travel. All Rights Reserved. Explore Bali With Us.
+        </div>
+    </footer>
+
+    <!-- JavaScript for Bilingual Support & Form Handling -->
+    <script>
+        const translations = {
+            id: {
+                nav_tours: "Tour Paket",
+                nav_transfer: "Airport Transfer",
+                nav_activities: "Aktivitas & Tiket",
+                nav_booking: "Booking Form",
+                nav_payment: "Pembayaran",
+                whatsapp_btn: "WhatsApp",
+                hero_badge: "Official Dwinara Travel & Tour Service",
+                hero_desc: "Nikmati liburan impian Anda di Bali dengan layanan transport privat, tour eksklusif, dan tiket aktivitas terbaik bersama pemandu profesional.",
+                hero_btn1: "Lihat Tour Paket",
+                hero_btn2: "Airport Transfer",
+                tour_title: "Tour Paket Bali",
+                tour_subtitle: "Pilih destinasi favorit Anda. Sudah termasuk Mobil + Driver, Biaya Parkir, Air Mineral, dan Bensin.",
+                include_label: "Include: Car + Driver, Fee Parking, Mineral Water, Petrol",
+                book_wa: "Book via WhatsApp",
+                transfer_title: "Airport Transfer Service",
+                transfer_subtitle: "Layanan antar-jemput bandara aman, nyaman, dan tepat waktu ke seluruh wilayah Bali.",
+                activity_title: "Tiket Aktivitas & Petualangan",
+                activity_subtitle: "Dapatkan pengalaman seru dan tiket masuk eksklusif di Bali.",
+                form_title: "Formulir Pemesanan Online",
+                form_subtitle: "Isi data di bawah ini, pemesanan akan langsung terhubung ke WhatsApp official kami.",
+                form_name: "Nama Lengkap / Full Name",
+                form_type: "Jenis Layanan / Service Type",
+                form_pax: "Jumlah Penumpang / Passenger",
+                form_luggage: "Jumlah Bagasi / Luggage",
+                form_payment: "Metode Pembayaran / Payment",
+                form_submit: "Kirim Pesanan ke WhatsApp",
+                payment_title: "Informasi Pembayaran Bank",
+                payment_subtitle: "Lakukan pembayaran transfer melalui rekening resmi perusahaan kami di bawah ini:",
+                footer_desc: "Mitra terpercaya liburan dan transportasi Anda di Bali. Profesional, aman, dan memuaskan.",
+                footer_contact: "Kontak & Alamat",
+                footer_quick: "Menu Cepat"
+            },
+            en: {
+                nav_tours: "Tour Packages",
+                nav_transfer: "Airport Transfer",
+                nav_activities: "Activities & Tickets",
+                nav_booking: "Booking Form",
+                nav_payment: "Payment",
+                whatsapp_btn: "WhatsApp",
+                hero_badge: "Official Dwinara Travel & Tour Service",
+                hero_desc: "Enjoy your dream vacation in Bali with private transport, exclusive tours, and top activity tickets with professional guides.",
+                hero_btn1: "View Tour Packages",
+                hero_btn2: "Airport Transfer",
+                tour_title: "Bali Tour Packages",
+                tour_subtitle: "Choose your favorite destination. Includes Car + Driver, Parking Fee, Mineral Water, and Petrol.",
+                include_label: "Include: Car + Driver, Fee Parking, Mineral Water, Petrol",
+                book_wa: "Book via WhatsApp",
+                transfer_title: "Airport Transfer Service",
+                transfer_subtitle: "Safe, comfortable, and on-time airport pick-up and drop-off service across Bali.",
+                activity_title: "Activity & Adventure Tickets",
+                activity_subtitle: "Get exciting experiences and exclusive admission tickets in Bali.",
+                form_title: "Online Booking Form",
+                form_subtitle: "Fill out the form below, your booking will connect directly to our official WhatsApp.",
+                form_name: "Full Name",
+                form_type: "Service Type",
+                form_pax: "Number of Passengers",
+                form_luggage: "Number of Luggage",
+                form_payment: "Payment Method",
+                form_submit: "Send Booking to WhatsApp",
+                payment_title: "Bank Payment Information",
+                payment_subtitle: "Make transfer payments through our official company bank account below:",
+                footer_desc: "Your trusted holiday and transportation partner in Bali. Professional, safe, and satisfying.",
+                footer_contact: "Contact & Address",
+                footer_quick: "Quick Links"
+            }
+        };
+
+        function setLanguage(lang) {
+            document.querySelectorAll("[data-translate]").forEach(el => {
+                const key = el.getAttribute("data-translate");
+                if (translations[lang] && translations[lang][key]) {
+                    el.textContent = translations[lang][key];
+                }
+            });
+            if(lang === 'id') {
+                document.getElementById('btn-id').classList.add('text-brandGold', 'font-bold');
+                document.getElementById('btn-en').classList.remove('text-brandGold', 'font-bold');
+            } else {
+                document.getElementById('btn-en').classList.add('text-brandGold', 'font-bold');
+                document.getElementById('btn-id').classList.remove('text-brandGold', 'font-bold');
+            }
+        }
+
+        function togglePaymentInfo() {
+            const paymentMethod = document.getElementById('bPayment').value;
+            const bankBox = document.getElementById('bankInfoBox');
+            if (paymentMethod === 'Transfer Bank') {
+                bankBox.classList.remove('hidden');
+            } else {
+                bankBox.classList.add('hidden');
+            }
+        }
+
+        function submitBooking(event) {
+            event.preventDefault();
+            const name = document.getElementById('bName').value;
+            const type = document.getElementById('bType').value;
+            const passenger = document.getElementById('bPassenger').value;
+            const luggage = document.getElementById('bLuggage').value;
+            const payment = document.getElementById('bPayment').value;
+
+            let message = `Halo Dwinara Travel, saya ingin melakukan pemesanan:%0A` +
+                          `- Nama: ${encodeURIComponent(name)}%0A` +
+                          `- Jenis Layanan: ${encodeURIComponent(type)}%0A` +
+                          `- Penumpang: ${encodeURIComponent(passenger)} Orang%0A` +
+                          `- Bagasi: ${encodeURIComponent(luggage)} Koper%0A` +
+                          `- Pembayaran: ${encodeURIComponent(payment)}`;
+
+            window.open(`https://wa.me/6281803374283?text=${message}`, '_blank');
+        }
+    </script>
+</body>
+</html>
